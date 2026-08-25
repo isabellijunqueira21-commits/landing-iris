@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Tokens da marca Íris. Fonte única — nenhum hex solto nos componentes.
+   As cores oficiais do cliente são vinho, dourado, creme e grafite; as demais
+   são derivadas do design aprovado no Claude Design.
+--------------------------------------------------------------------------- */
+@theme {
+  /* fundo escuro — a landing vive em cima dele */
+  --color-noite: #2c0a12;
+  --color-tinta: #1e070d;
+
+  /* marca */
+  --color-vinho: #6b1a2a;
+  --color-vinho-fundo: #45101c;
+  --color-dourado: #c9973a;
+  --color-dourado-claro: #e0b45c;
+  --color-dourado-luz: #e8c170;
+
+  /* claros */
+  --color-creme: #fdfaf6;
+  --color-creme-morno: #f6f0e6;
+  --color-borda-clara: #ede4d6;
+  --color-borda-morna: #e9e1d4;
+
+  /* texto */
+  --color-grafite: #241f20;
+  --color-tinta-suave: #5f564d;
+  --color-neutro: #8a7f72;
+  --color-areia: #e8d9c3;
+  --color-rosa-seco: #b99a8c;
+
+  --font-display: var(--fonte-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-corpo: var(--fonte-lora), Lora, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* o header é sticky: âncoras param abaixo dele */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-noite);
+  color: var(--color-grafite);
+  font-family: var(--font-corpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-dourado);
+  color: var(--color-noite);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-dourado-claro);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Movimento. Tudo que se mexe sozinho na página nasce aqui, para poder ser
+   desligado num bloco só quando o sistema pede menos movimento.
+--------------------------------------------------------------------------- */
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes flutuar-curto {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pulsar-brilho {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes faiscar {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes orbitar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes contra-orbitar {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.anim-flutuar {
+  animation: flutuar 6s ease-in-out infinite;
+}
+.anim-flutuar-curto {
+  animation: flutuar-curto 5s ease-in-out infinite;
+}
+.anim-brilho {
+  animation: pulsar-brilho 4s ease-in-out infinite;
+}
+.anim-faisca {
+  animation: faiscar 5s ease-in-out infinite;
+}
+.anim-orbita {
+  animation: orbitar 70s linear infinite;
+}
+.anim-contra-orbita {
+  animation: contra-orbitar 70s linear infinite;
+}
+
+/* entrada do hero — uma sequência só, no carregamento */
+.entra {
+  animation: surgir 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .anim-flutuar,
+  .anim-flutuar-curto,
+  .anim-brilho,
+  .anim-faisca,
+  .anim-orbita,
+  .anim-contra-orbita,
+  .entra {
+    animation: none !important;
+  }
+}
