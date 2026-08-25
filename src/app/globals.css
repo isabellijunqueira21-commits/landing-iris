@@ -59,6 +59,86 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
+   Prosa. Só as páginas jurídicas usam — texto corrido longo, onde marcar
+   elemento por elemento no JSX deixaria o documento ilegível na revisão.
+   A medida de leitura fica em ~68 caracteres: mais que isso, o olho perde a
+   linha na volta.
+--------------------------------------------------------------------------- */
+.prosa {
+  font-family: var(--font-corpo);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-tinta-suave);
+}
+
+.prosa > * + * {
+  margin-top: 1.15rem;
+}
+
+.prosa h2 {
+  margin-top: 3.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-borda-clara);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-grafite);
+  text-wrap: pretty;
+}
+
+.prosa h2 + * {
+  margin-top: 1rem;
+}
+
+.prosa h3 {
+  margin-top: 2rem;
+  font-family: var(--font-corpo);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-grafite);
+}
+
+.prosa strong {
+  font-weight: 600;
+  color: var(--color-grafite);
+}
+
+.prosa a {
+  color: var(--color-vinho);
+  text-decoration: underline;
+  text-decoration-color: var(--color-dourado);
+  text-underline-offset: 3px;
+}
+
+.prosa a:hover {
+  color: var(--color-dourado);
+}
+
+.prosa ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: 1.5rem;
+}
+
+.prosa li {
+  position: relative;
+  list-style: none;
+}
+
+.prosa li::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  left: -1.15rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-dourado);
+}
+
+/* ---------------------------------------------------------------------------
    Movimento. Tudo que se mexe sozinho na página nasce aqui, para poder ser
    desligado num bloco só quando o sistema pede menos movimento.
 --------------------------------------------------------------------------- */

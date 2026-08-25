@@ -28,6 +28,8 @@ Next.js 15 (App Router) · TypeScript estrito · Tailwind CSS v4 · fontes por
 | Para onde vão os botões | [src/lib/links.ts](src/lib/links.ts) |
 | Cores e fontes | bloco `@theme` de [src/app/globals.css](src/app/globals.css) |
 | Ordem das seções | [src/app/page.tsx](src/app/page.tsx) |
+| Termos e privacidade | [src/app/termos/](src/app/termos/) e [src/app/privacidade/](src/app/privacidade/) |
+| E-mail de contato | `CONTATO` em [src/lib/links.ts](src/lib/links.ts) — os três lugares citam a mesma constante |
 | Uma seção específica | [src/componentes/](src/componentes/) — um arquivo por seção |
 | Título e descrição no Google | `metadata` em [src/app/layout.tsx](src/app/layout.tsx) |
 | O cartão que aparece ao compartilhar | [arte/og.html](arte/og.html), e depois regerar (abaixo) |
@@ -97,11 +99,40 @@ exigiu:
 5. Abaixo de 1024 px a órbita vira lista. No desktop a lista não some: fica
    como leitura de tela, porque a órbita é `aria-hidden` e o conteúdo precisa
    continuar disponível para quem usa leitor.
+6. O padding do rodapé passou para dentro do `max-width`. No export ele estava
+   fora, e o rodapé começava 40 px à esquerda da navegação — medido: 130 px
+   contra 170 px. Agora as três faixas (navegação, cabeçalho jurídico, rodapé)
+   começam na mesma coluna.
+
+## As páginas jurídicas
+
+`/termos` e `/privacidade` são estáticas, com casca própria
+([src/componentes/pagina-legal.tsx](src/componentes/pagina-legal.tsx)): faixa
+escura em cima, coluna de leitura de 68 caracteres e o mesmo rodapé da home.
+Nenhuma chamada de venda — quem chega ali veio ler.
+
+O texto é da Isabelli, transcrito. Duas decisões na transcrição:
+
+- **A data de atualização ficou em `25 de agosto de 2026`**, numa constante no
+  topo de cada página. O original trazia um placeholder entre colchetes; deixar
+  colchete numa página jurídica no ar é pior que uma data. **Troque na
+  publicação.**
+- **Os parágrafos finais em itálico não foram publicados** — os que dizem "este
+  documento é um ponto de partida" e "recomenda-se revisão jurídica antes da
+  publicação". São recado para a autora, não texto para o leitor: numa página no
+  ar, aquilo anuncia ao cliente que os termos não foram revisados.
 
 ## Pendências
 
-- **Rodapé:** `Contato`, `Termos de uso` e `Privacidade` estão como `#`. Não
-  há e-mail nem páginas jurídicas definidos — não invente endereço, peça.
+- **O e-mail `contato@irisjuridico.com.br` precisa existir de verdade.** Ele
+  está publicado nos Termos, na Política e no rodapé — e a Política promete
+  resposta no prazo da LGPD. Se a caixa não estiver configurada no domínio, o
+  compromisso fica no ar sem ninguém do outro lado.
+- **Revisão jurídica:** os dois documentos ainda não passaram por advogado(a),
+  como a própria autora anotou. Vale antes de publicar, sobretudo reembolso,
+  limitação de responsabilidade e a relação de consumo (CDC).
+- **Domínio nos textos:** os dois documentos dizem `irisjuridico.com.br`, que
+  não é onde a landing nem o app estão hoje. Alinhar antes de publicar.
 - **Domínio:** `metadataBase` em `layout.tsx` está em
   `https://iris-estudos.vercel.app`, que é um palpite. **Isto precisa bater com
   o domínio real antes do deploy:** `og:image` é uma URL absoluta montada a
