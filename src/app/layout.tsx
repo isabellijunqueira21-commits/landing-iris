@@ -23,6 +23,18 @@ const TITULO = 'Íris — sua professora particular de Direito, 24 horas'
 const DESCRICAO =
   'O Íris organiza todos os seus estudos de Direito e te guia, questão por questão, matéria por matéria — com uma professora de IA disponível 24 horas.'
 
+/**
+ * Cartão de compartilhamento. É imagem gerada — a fonte é `arte/og.html`, e o
+ * README diz como refazer. Se o título da página mudar, o cartão precisa ser
+ * refeito junto: o texto está dentro da imagem, não sai do `metadata`.
+ */
+const CARTAO = {
+  url: '/midia/og-iris.jpg',
+  width: 1200,
+  height: 630,
+  alt: 'Íris Estudos Jurídicos — sua professora particular de Direito, com a Íris ao lado do título',
+} as const
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://iris-estudos.vercel.app'),
   title: TITULO,
@@ -34,11 +46,14 @@ export const metadata: Metadata = {
     siteName: 'Íris Estudos Jurídicos',
     title: TITULO,
     description: DESCRICAO,
+    url: '/',
+    images: [CARTAO],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITULO,
     description: DESCRICAO,
+    images: [CARTAO],
   },
 }
 

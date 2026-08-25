@@ -30,6 +30,7 @@ Next.js 15 (App Router) · TypeScript estrito · Tailwind CSS v4 · fontes por
 | Ordem das seções | [src/app/page.tsx](src/app/page.tsx) |
 | Uma seção específica | [src/componentes/](src/componentes/) — um arquivo por seção |
 | Título e descrição no Google | `metadata` em [src/app/layout.tsx](src/app/layout.tsx) |
+| O cartão que aparece ao compartilhar | [arte/og.html](arte/og.html), e depois regerar (abaixo) |
 
 **Nunca escreva um hex direto no componente.** Se a cor não existe como token
 no `@theme`, o token é que está faltando.
@@ -45,10 +46,33 @@ Tudo em [public/midia/](public/midia/):
 | `iris-boas-vindas.png` | Íris sorrindo — hero e centro da órbita | `public/iris/iris-sorrindo.png` do app |
 | `iris-dica.png` | Íris com o dedo erguido — chamada final | `public/iris/iris-explicando.png` do app |
 | `fundo-nebulosa.jpg` | fundo das duas seções escuras | PNG de 1 MB convertido para 17 kB |
+| `og-iris.jpg` | cartão de compartilhamento, 1200x630 | gerado de [arte/og.html](arte/og.html) — ver abaixo |
 
 Os PNGs da Íris são os mesmos do app, onde o canal alpha foi reconstruído por
 script. Se um dia chegar arte com alpha de verdade do fornecedor, ela substitui
 os dois arquivos aqui também.
+
+## Regerar o cartão de compartilhamento
+
+O texto do cartão está **dentro da imagem**, não no `metadata`. Mudou o título,
+o cartão precisa ser refeito — senão o link compartilhado passa a dizer uma
+coisa e a página outra.
+
+1. Edite [arte/og.html](arte/og.html).
+2. `cp arte/og.html public/_og-temp.html` e `npm run build && npm start`.
+3. Abra `http://localhost:3000/_og-temp.html` no Chrome, viewport de 1200×630,
+   e capture a página em 2× (2400×1260).
+4. Reduza para 1200×630 e salve como JPEG:
+   `ffmpeg -i captura.png -vf "scale=1200:630:flags=lanczos" -q:v 3 public/midia/og-iris.jpg`
+5. Apague o `public/_og-temp.html`.
+
+Capturar em 2× e reduzir depois não é capricho: a serifa da Cormorant sai suja
+se a captura for feita direto no tamanho final. E JPEG, não PNG — o mesmo
+cartão dá 86 kB em JPEG contra 467 kB em PNG, sem diferença visível.
+
+A página precisa ser servida por HTTP, não aberta por `file://` — nesse
+protocolo a fonte do Google não carrega e o cartão sai com a fonte errada, sem
+avisar. Confira que a Cormorant apareceu antes de aceitar a captura.
 
 ## Diferenças em relação ao design aprovado
 
@@ -78,7 +102,9 @@ exigiu:
 
 - **Rodapé:** `Contato`, `Termos de uso` e `Privacidade` estão como `#`. Não
   há e-mail nem páginas jurídicas definidos — não invente endereço, peça.
-- **Domínio:** `metadataBase` em `layout.tsx` aponta para o domínio provisório
-  da Vercel. Trocar quando o domínio próprio entrar.
-- **Imagem de compartilhamento:** não há `og:image`. Link colado no WhatsApp ou
-  no Instagram sai sem cartão visual.
+- **Domínio:** `metadataBase` em `layout.tsx` está em
+  `https://iris-estudos.vercel.app`, que é um palpite. **Isto precisa bater com
+  o domínio real antes do deploy:** `og:image` é uma URL absoluta montada a
+  partir dele, e se o domínio estiver errado o scraper busca a imagem no lugar
+  errado e o link sai sem cartão. Trocar de novo quando o domínio próprio
+  entrar.
