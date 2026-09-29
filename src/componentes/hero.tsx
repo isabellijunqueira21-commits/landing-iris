@@ -67,10 +67,10 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-5.5 gap-y-4">
-            <BotaoDourado href={links.cadastro} tamanho="grande" blocoNoMobile>
-              Começar agora
+            <BotaoDourado href={links.listaDeEspera} tamanho="grande" blocoNoMobile>
+              Quero entrar na lista
             </BotaoDourado>
-            <span className="font-corpo text-sm text-rosa-seco">Sem fidelidade · cancele quando quiser</span>
+            <span className="font-corpo text-sm text-rosa-seco">Abre em breve · sem fidelidade</span>
           </div>
 
           <p className="mt-8 inline-flex items-center gap-3.5 rounded-2xl border border-dourado/55 bg-linear-120 from-dourado/16 to-dourado/5 px-5 py-3.5 backdrop-blur-[3px]">
@@ -155,8 +155,8 @@ function Navegacao() {
         <a href={links.entrar} className="font-corpo text-sm text-areia transition hover:text-dourado-claro">
           Entrar
         </a>
-        <BotaoDourado href={links.cadastro} tamanho="pequeno" className="rounded-full">
-          Começar agora
+        <BotaoDourado href={links.listaDeEspera} tamanho="pequeno" className="rounded-full">
+          Lista de espera
         </BotaoDourado>
       </div>
     </nav>

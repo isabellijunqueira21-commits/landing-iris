@@ -51,15 +51,15 @@ export function ChamadaFinal() {
 
         <div>
           <h2 className="font-display text-[clamp(2.125rem,5.5vw,3.25rem)] leading-[1.12] font-semibold text-pretty text-creme">
-            Comece a estudar com a <em className="text-dourado-claro not-italic">Íris</em> hoje.
+            Seja dos primeiros a estudar com a <em className="text-dourado-claro not-italic">Íris</em>.
           </h2>
           <p className="mt-4.5 mb-8.5 font-corpo text-[17px] leading-[1.7] text-areia">
             Da faculdade ao concurso, sua professora particular de Direito já está pronta.
           </p>
-          <BotaoDourado href={links.cadastro} tamanho="grande" blocoNoMobile className="rounded-[13px]">
-            Começar agora
+          <BotaoDourado href={links.listaDeEspera} tamanho="grande" blocoNoMobile className="rounded-[13px]">
+            Quero entrar na lista
           </BotaoDourado>
-          <p className="mt-4 font-corpo text-[13px] text-rosa-seco">Garantia de 7 dias · cancele quando quiser</p>
+          <p className="mt-4 font-corpo text-[13px] text-rosa-seco">Abre em breve · garantia de 7 dias</p>
         </div>
       </div>
     </section>

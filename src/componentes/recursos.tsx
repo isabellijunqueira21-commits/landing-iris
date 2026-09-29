@@ -89,10 +89,10 @@ export function Recursos() {
           <article className="flex flex-col justify-center rounded-2xl bg-linear-150 from-vinho to-vinho-fundo px-7.5 py-8.5">
             <h3 className="font-display text-[26px] leading-[1.25] font-semibold text-creme">Estudar sozinho acabou.</h3>
             <p className="mt-2.5 mb-4.5 font-corpo text-sm leading-[1.7] text-areia">
-              Comece hoje com a Íris ao seu lado.
+              Entre na lista e saiba primeiro quando abrir.
             </p>
-            <BotaoDourado href={links.cadastro} tamanho="pequeno" className="self-start rounded-[10px]">
-              Começar agora
+            <BotaoDourado href={links.listaDeEspera} tamanho="pequeno" className="self-start rounded-[10px]">
+              Quero entrar na lista
             </BotaoDourado>
           </article>
         </div>

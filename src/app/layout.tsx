@@ -36,7 +36,7 @@ const CARTAO = {
 } as const
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://iris-estudos.vercel.app'),
+  metadataBase: new URL('https://irisjuridico.com.br'),
   title: TITULO,
   description: DESCRICAO,
   applicationName: 'Íris Estudos Jurídicos',

@@ -20,6 +20,9 @@ export function Preco() {
           <h2 className="mt-3.5 font-display text-[clamp(2rem,5vw,2.875rem)] leading-[1.15] font-semibold text-pretty text-grafite">
             Menos que uma mensalidade de cursinho.
           </h2>
+          <p className="mt-4 font-corpo text-[15px] text-neutro">
+            Abre em breve. Entre na lista de espera e seja avisado primeiro.
+          </p>
         </div>
 
         <div className="mx-auto grid max-w-[860px] items-center gap-5.5 md:grid-cols-[1.15fr_1fr]">
@@ -57,8 +60,8 @@ export function Preco() {
               ))}
             </ul>
 
-            <BotaoDourado href={links.cadastro} className="mt-7 w-full py-4 text-base">
-              Começar agora
+            <BotaoDourado href={links.listaDeEspera} className="mt-7 w-full py-4 text-base">
+              Quero entrar na lista
             </BotaoDourado>
           </div>
 
@@ -85,8 +88,8 @@ export function Preco() {
               ))}
             </ul>
 
-            <BotaoContorno href={links.cadastro} className="mt-6.5">
-              Assinar trimestral
+            <BotaoContorno href={links.listaDeEspera} className="mt-6.5">
+              Quero entrar na lista
             </BotaoContorno>
           </div>
         </div>

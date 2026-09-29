@@ -4,7 +4,7 @@ import { PaginaLegal } from '@/componentes/pagina-legal'
 import { CONTATO, contatoHref } from '@/lib/links'
 
 /** Troque na hora de publicar — é a data que o documento declara ao leitor. */
-const ATUALIZADO_EM = '25 de agosto de 2026'
+const ATUALIZADO_EM = '29 de setembro de 2026'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade — Íris',
