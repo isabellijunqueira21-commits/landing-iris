@@ -4,8 +4,11 @@
  */
 const APP = 'https://app.irisjuridico.com.br'
 
-/** O e-mail publicado nos Termos e na Política — os três lugares citam o mesmo. */
-export const CONTATO = 'contato@irisjuridico.com.br'
+/**
+ * O e-mail publicado nos Termos, na Política e no rodapé — os três lugares
+ * citam o mesmo. É também para onde vão os pedidos de lista de espera.
+ */
+export const CONTATO = 'gravitta.ia@gmail.com'
 export const contatoHref = `mailto:${CONTATO}`
 
 /**
@@ -13,9 +16,8 @@ export const contatoHref = `mailto:${CONTATO}`
  * lista de espera por e-mail. Mandar para o /cadastro daria acesso sem pagar.
  * Quando o checkout entrar, os botões voltam a apontar para ele.
  */
-const LISTA_DE_ESPERA = 'agentyx.ia@gmail.com'
 const listaDeEsperaHref =
-  `mailto:${LISTA_DE_ESPERA}` +
+  `mailto:${CONTATO}` +
   `?subject=${encodeURIComponent('Lista de espera — Íris')}` +
   `&body=${encodeURIComponent('Oi! Quero entrar na lista de espera do Íris.\n\nNome:\nEstudo para (faculdade, OAB ou concurso):\n')}`
 
